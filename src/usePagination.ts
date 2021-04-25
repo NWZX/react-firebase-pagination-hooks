@@ -63,11 +63,13 @@ export const usePaginationData = <T>(
   query?: firestore.Query | null,
   options?: {
     idField?: string;
+    refField?: string;
     limit?: number;
     snapshotListenOptions?: firestore.SnapshotListenOptions;
   }
 ): PaginationHook<T> => {
   const idField = options ? options.idField : undefined;
+  const refField = options ? options.refField : undefined;
 
   const [snapshot, fields, error] = usePagination(query, {
     snapshotListenOptions: options?.snapshotListenOptions,
@@ -76,9 +78,9 @@ export const usePaginationData = <T>(
   const values = useMemo(
     () =>
       (snapshot
-        ? snapshot.map((doc) => snapshotToData(doc, idField))
+        ? snapshot.map((doc) => snapshotToData(doc, idField, refField))
         : undefined) as T[],
-    [snapshot, idField]
+    [snapshot, idField, refField]
   );
   return [values, fields, error];
 };

@@ -16,7 +16,6 @@
     "build": "yarn build:cjs && yarn build:es",
     "pre-release": "yarn clean && yarn build"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/react": "^16.9.41",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
@@ -32,9 +31,9 @@
     "firebase": "^7.15.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
+    "react": "16.13.1",
     "rimraf": "^3.0.2",
-    "typescript": "^3.9.7",
-    "react": "16.13.1"
+    "typescript": "^3.9.7"
   },
   "peerDependencies": {
     "react": "^16.8.0",
