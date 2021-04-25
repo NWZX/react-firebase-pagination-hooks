@@ -9,12 +9,12 @@
   "license": "Apache-2.0",
   "scripts": {
     "lint": "eslint src/**/*.ts",
-    "lint:fix": "npm lint --fix",
+    "lint:fix": "npm run lint --fix",
     "clean": "rimraf dist",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir ./dist/esm",
-    "build": "npm build:cjs && npm build:es",
-    "pre-release": "npm clean && npm build"
+    "build": "npm run build:cjs && npm run build:es",
+    "pre-release": "npm run clean && npm run build"
   },
   "devDependencies": {
     "@types/react": "^16.9.41",
@@ -48,7 +48,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm lint && npm clean && npm build"
+      "pre-push": "npm run lint && npm run clean && npm run build"
     }
   }
 }
